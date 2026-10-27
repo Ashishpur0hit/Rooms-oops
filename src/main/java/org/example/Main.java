@@ -24,7 +24,7 @@ public class Main {
 
         Student[] s = new Student[20];
 
-        // Input student data
+
         for (int i = 0; i < 20; i++) {
             System.out.println("\nEnter details of Student " + (i + 1));
 
@@ -43,15 +43,14 @@ public class Main {
         int room = 1;
         int[] roomOf = new int[20];
 
-        // Step 1: Allot rooms to students
-        // Prefer same gender and same course
+
         for (int i = 0; i < 20; i++) {
             if (s[i].allotted)
                 continue;
 
             int partner = -1;
 
-            // First preference: Same gender + same course
+
             for (int j = i + 1; j < 20; j++) {
                 if (!s[j].allotted
                         && s[i].gender.equalsIgnoreCase(s[j].gender)
@@ -61,7 +60,6 @@ public class Main {
                 }
             }
 
-            // Second preference: Same gender
             if (partner == -1) {
                 for (int j = i + 1; j < 20; j++) {
                     if (!s[j].allotted
@@ -83,20 +81,7 @@ public class Main {
             room++;
         }
 
-        // Step 2: Check room limit
-        if (room - 1 > 10) {
-            System.out.println(
-                    "\nAllotment is not possible within 10 rooms "
-                            + "while maintaining same-gender rooms."
-            );
-            System.out.println(
-                    "Some students need separate rooms. "
-                            + "More rooms or a different arrangement is required."
-            );
-        }
 
-        // Step 3: Display allotment
-        System.out.println("\n===== HOSTEL ROOM ALLOTMENT =====");
 
         for (int r = 1; r < room; r++) {
             System.out.println("\nRoom " + r + ":");
